@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+ * DBeaver - Universal Database Manager
+ * Copyright (C) 2010-2019 Serge Rider (serge@jkiss.org)
+ * Copyright (C) 2017-2018 Alexander Fedorov (alexander.fedorov@jkiss.org)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+  -->
+<plugin>
+
+    <extension point="org.eclipse.debug.core.sourceLocators">
+        <sourceLocator id="org.jkiss.dbeaver.debug.sourceLocator" class="org.jkiss.dbeaver.debug.sourcelookup.DBGSourceLookupDirector" name="%procedureSourceLocator.name"/>
+    </extension>
+
+    <extension point="org.eclipse.debug.core.sourcePathComputers">
+        <sourcePathComputer class="org.jkiss.dbeaver.debug.sourcelookup.DBGSourcePathComputer" id="org.jkiss.dbeaver.debug.sourcePathComputer">
+        </sourcePathComputer>
+    </extension>
+
+    <extension point="org.eclipse.debug.core.sourceContainerTypes">
+        <sourceContainerType id="org.jkiss.dbeaver.debug.core.datasourceSourceContainerType" class="org.jkiss.dbeaver.debug.sourcelookup.DatabaseSourceContainerTypeDelegate" name="Databases" description="A collection of databases"/>
+    </extension>
+
+    <extension point="org.eclipse.debug.core.launchConfigurationTypes">
+        <!-- Setting category="org.jkiss.dbeaver.debug" will show this configuration only in this category and not in general configurations dialog -->
+        <launchConfigurationType
+                id="org.jkiss.dbeaver.debug.launchConfiguration"
+                delegate="org.jkiss.dbeaver.debug.core.DatabaseLaunchDelegate"
+                delegateDescription="%launchConfigurationType.dbeaver.delegateDescription"
+                delegateName="%launchConfigurationType.dbeaver.delegateName"
+                modes="run,debug"
+                name="%launchConfigurationType.dbeaver.name"
+                sourceLocatorId="org.jkiss.dbeaver.debug.sourceLocator"
+                sourcePathComputerId="org.jkiss.dbeaver.debug.sourcePathComputer">
+        </launchConfigurationType>
+    </extension>
+
+    <!-- Breakpoints -->
+
+    <extension id="databaseBreakpointMarker" name="%databaseBreakpoint.name" point="org.eclipse.core.resources.markers">
+        <super type="org.jkiss.dbeaver.runtime.marker.datasourceId"/>
+        <super type="org.eclipse.debug.core.breakpointMarker"/>
+        <persistent value="true"/>
+        <attribute name="org.jkiss.dbeaver.debug.core.procedureOid"/>
+    </extension>
+
+    <extension
+            id="databaseLineBreakpointMarker"
+            name="%databaseLineBreakpoint.name"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.debug.core.lineBreakpointMarker"/>
+        <super type="org.jkiss.dbeaver.debug.core.databaseBreakpointMarker"/>
+        <persistent
+                value="true">
+        </persistent>
+    </extension>
+    <extension point="org.eclipse.debug.core.breakpoints">
+        <breakpoint
+                class="org.jkiss.dbeaver.debug.core.breakpoints.DatabaseLineBreakpoint"
+                id="org.jkiss.dbeaver.debug.core.databaseLineBreakpoint"
+                markerType="org.jkiss.dbeaver.debug.core.databaseLineBreakpointMarker"
+                name="%databaseLineBreakpoint.name">
+        </breakpoint>
+    </extension>
+
+</plugin>
