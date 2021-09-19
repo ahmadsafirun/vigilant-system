@@ -1,0 +1,44 @@
+
+/* ############################# DBeaver preferences ############################# */
+/* Includes styles for all plugins. Eclipse bug? */
+
+ IEclipsePreferences#org-eclipse-ui-workbench:org-jkiss-dbeaver-core {
+        preferences:
+            'org.jkiss.dbeaver.sql.resultset.color.cell.odd.background=16,16,16'
+            'org.jkiss.dbeaver.sql.resultset.color.cell.modified.background=210,68,0'
+            'org.jkiss.dbeaver.sql.resultset.color.cell.error.background=128,0,0'
+            'org.jkiss.dbeaver.sql.resultset.color.cell.new.background=0,115,0'
+            'org.jkiss.dbeaver.sql.resultset.color.cell.deleted.background=140,0,0'
+            'org.jkiss.dbeaver.sql.resultset.color.cell.matched.background=139,69,19'
+            'org.jkiss.dbeaver.sql.resultset.color.lines.normal=64,64,64'
+            'org.jkiss.dbeaver.sql.resultset.color.lines.selected=105,105,105'
+            'org.jkiss.dbeaver.sql.resultset.color.header.background=120,120,120'
+            'org.jkiss.dbeaver.sql.resultset.color.header.foreground=255,255,255'
+            'org.jkiss.dbeaver.sql.resultset.color.header.selected.background=105,105,150'
+            'org.jkiss.dbeaver.sql.resultset.color.null.foreground=100,100,100'
+            'org.jkiss.dbeaver.sql.resultset.color.binary.foreground=100,100,100'
+            'org.jkiss.dbeaver.sql.resultset.color.boolean.foreground=255,0,0'
+            'org.jkiss.dbeaver.sql.resultset.color.datetime.foreground=0,191,0'
+            'org.jkiss.dbeaver.sql.resultset.color.numeric.foreground=64,64,255'
+            'org.jkiss.dbeaver.sql.resultset.color.string.foreground=111,111,111'
+
+            'org.jkiss.dbeaver.sql.editor.color.text.foreground=221,221,221'
+            'org.jkiss.dbeaver.sql.editor.color.text.background=65,70,74'
+            'org.jkiss.dbeaver.sql.editor.color.disabled.background=0,0,0'
+            'org.jkiss.dbeaver.sql.editor.color.keyword.foreground=255,128,64'
+            'org.jkiss.dbeaver.sql.editor.color.datatype.foreground=255,255,128'
+            'org.jkiss.dbeaver.sql.editor.color.string.foreground=144,238,144'
+            'org.jkiss.dbeaver.sql.editor.color.number.foreground=0,128,128'
+            'org.jkiss.dbeaver.sql.editor.color.comment.foreground=169,169,169'
+            'org.jkiss.dbeaver.sql.editor.color.delimiter.foreground=255,0,0'
+
+            'org.jkiss.dbeaver.erd.diagram.background=16,16,16'
+            'org.jkiss.dbeaver.erd.diagram.entity.regular.background=0,0,0'
+            'org.jkiss.dbeaver.erd.diagram.entity.primary.background=128,64,32'
+            'org.jkiss.dbeaver.erd.diagram.entity.association.background=64,64,64'
+            'org.jkiss.dbeaver.erd.diagram.entity.name.foreground=255,255,255'
+            'org.jkiss.dbeaver.erd.diagram.attributes.background=64,64,64'
+            'org.jkiss.dbeaver.erd.diagram.attributes.foreground=255,255,255'
+            'org.jkiss.dbeaver.erd.diagram.notes.background=64,64,64'
+            'org.jkiss.dbeaver.erd.diagram.notes.foreground=255,255,255'
+}
