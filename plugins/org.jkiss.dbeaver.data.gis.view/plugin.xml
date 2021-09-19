@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<plugin>
+
+    <extension-point id="org.jkiss.dbeaver.data.gis.geometryViewer" name="Geometry viewer" schema="schema/org.jkiss.dbeaver.data.gis.geometryViewer.exsd"/>
+
+    <extension point="org.eclipse.core.runtime.preferences">
+        <initializer class="org.jkiss.dbeaver.ui.gis.internal.GISViewerPreferencesInitializer"/>
+    </extension>
+
+    <extension point="org.jkiss.dbeaver.dataManager">
+        <manager class="org.jkiss.dbeaver.ui.gis.GeometryValueManager" id="org.jkiss.dbeaver.ui.gis.GeometryValueManager">
+            <supports type="org.jkiss.dbeaver.model.gis.DBGeometry"/>
+            <supports typeName="GIS.Transformed"/> <!-- Fake type name for GIS transformer -->
+        </manager>
+    </extension>
+
+    <extension point="org.jkiss.dbeaver.data.gis.geometryViewer">
+        <geometryViewer
+                label="Text"
+                description="View GIS object in text form"
+                icon="platform:/plugin/org.jkiss.dbeaver.model/icons/types/text.png"
+                id="text"
+                class="org.jkiss.dbeaver.ui.gis.panel.GISTextViewer"
+                supportsInline="true"/>
+        <geometryViewer
+                label="Map"
+                description="View GIS object on map"
+                icon="icons/map.png"
+                id="browser"
+                class="org.jkiss.dbeaver.ui.gis.panel.GISBrowserViewer"/>
+    </extension>
+
+    <extension point="org.jkiss.dbeaver.resultset.presentation">
+        <presentation
+                id="results.geometry"
+                label="%presentation.geometry.name"
+                description="%presentation.geometry.description"
+                icon="icons/map.png"
+                class="org.jkiss.dbeaver.ui.gis.presentation.GeometryPresentation"
+                type="transformer"
+                supportsRecordMode="false"
+                supportsPanels="false"
+                supportsNavigation="false"
+                supportsEdit="false"
+                order="500">
+            <objectType name="org.jkiss.dbeaver.model.exec.DBCResultSet" if="context.hasAttributeOfType('org.jkiss.dbeaver.model.gis.DBGeometry')"/>
+        </presentation>
+    </extension>
+
+</plugin>
